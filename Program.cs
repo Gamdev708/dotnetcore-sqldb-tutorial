@@ -1,5 +1,8 @@
 ﻿using DotNetCoreSqlDb.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.StackExchangeRedis; // For Redis cache
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // For MySQL
+
 
 var builder = WebApplication.CreateBuilder(args);
 
