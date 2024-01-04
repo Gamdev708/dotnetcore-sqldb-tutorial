@@ -1,7 +1,5 @@
 ﻿using DotNetCoreSqlDb.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.StackExchangeRedis; // For Redis cache
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // For MySQL
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +10,7 @@ builder.Logging.AddAzureWebAppDiagnostics();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseMySql("Data Source=localdatabase.db"));
+                    options.UseMySql(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
 
 
 builder.Services.AddStackExchangeRedisCache(options =>
